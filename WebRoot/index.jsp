@@ -15,19 +15,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<script type="text/javascript">
 		//打开浏览器的文件上传
 		function openBrows(){
+		document.getElementById("fileUp").click();
+		}
+		//文件上传
+		function doUpload(){
+		var file = document.getElementById("fileUp");
+		alert(file.file[0].NamedNodeMap);
 		}
 	</script>
   </head>
   
   <body>
     		<div>
+    			<h1>百度网盘多文件带进度条上传</h1>
     			<form>
-    				<a href="javascript:void(0)"  onclick="openBrows()">点击</a>
-    				<input type="file" id="fileUp"/>
+    				<a href="javascript:void(0)"  onclick="openBrows()">点击上传</a>
+    				<input type="file" id="fileUp" onchange="doUpload()" multiple style="display:none"/>
     			</form>
-    		</div>
+    		</div> 
   </body>
 </html>

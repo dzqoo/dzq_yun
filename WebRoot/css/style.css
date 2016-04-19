@@ -1,0 +1,29 @@
+body{
+	background:#47A7F3;
+	font-size:14px;
+	color:#ffffff;
+	font-family:"微软雅黑";
+}
+
+div { 
+	width:400px;
+	margin:0 auto; 
+	padding-top:100px;
+}
+h1{
+	font-size:30px;
+	text-shadow: 2px 5px 5px rgba(0,0,0,0.8);
+}
+a{
+	width:200px;
+	height:36px;
+	border:1px solid #275D88;
+	text-align:center;
+	display:block;
+	line-height:36px;
+	margin:30px auto;
+	text-decoration:none;
+}
+a:hover{
+	background:#2C6B98;
+}

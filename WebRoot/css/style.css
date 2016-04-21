@@ -1,11 +1,11 @@
 body{
-	background:#92C1E6;
+	background:#313C46;
 	font-size:14px;
 	color:#ffffff;
 	font-family:"微软雅黑";
 }
 
-div { 
+.box{ 
 	width:400px;
 	margin:0 auto; 
 	padding-top:100px;
@@ -17,12 +17,14 @@ h1{
 a{
 	width:200px;
 	height:36px;
-	border:1px solid #275D88;
+	border:2px solid #275D88;
 	text-align:center;
 	display:block;
 	line-height:36px;
 	margin:30px auto;
 	text-decoration:none;
+	font-size: 20px;
+	color:#ffffff;
 }
 a:hover{
 	background:#2C6B98;

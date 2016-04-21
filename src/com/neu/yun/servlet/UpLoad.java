@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
@@ -29,6 +28,8 @@ public class UpLoad extends HttpServlet {
 				DiskFileItemFactory factory = new DiskFileItemFactory();
 				// 2、创建文件上传对象
 				ServletFileUpload upload = new ServletFileUpload(factory);
+				//添加监听器
+				upload.setProgressListener(new YunProgressListener(request.getSession()));
 				// 3、获取文件上传对象
 				try {
 					List<FileItem> fileitems =upload.parseRequest(request);
@@ -47,11 +48,9 @@ public class UpLoad extends HttpServlet {
 								//创建临时文件
 								File tmpFile = new File(item.getName());
 								String  path = request.getServletContext().getRealPath("/");
-								System.out.println(path);
 								path = path+"files";
 								File files = new File(path);
 								files.mkdirs();
-								System.out.println(path);
 								//创建服务器文件夹
 								//创建服务器文件
 								File fileOnserver = new File(path,tmpFile.getName());

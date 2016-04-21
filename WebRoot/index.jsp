@@ -31,9 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     		<div>
     			<h1>百度网盘多文件带进度条上传</h1>
-    			<form method=“post” action="upload" enctype="multipart/form-data">
+    			<form method="post" action="upload" enctype="multipart/form-data">
     				<a href="javascript:void(0)"  onclick="openBrows()">点击上传</a>
-    				<input type="file" id="fileUp" name = "file" onchange="doUpload()" multiple style="display:none"/>
+    				<input type="file" id="fileUp" name = "file" onchange="doUpload()"  style="display:none"  multiple/>
     			</form>
     		</div> 
   </body>

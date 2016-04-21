@@ -24,15 +24,14 @@ public class UpLoad extends HttpServlet {
 			request.setCharacterEncoding("utf-8");
 			// 判断是不是文件上传
 			boolean isMulitpart = ServletFileUpload.isMultipartContent(request);
-			System.out.println(isMulitpart);
 			if (isMulitpart) {
 				// 1、实例化磁盘工厂
 				DiskFileItemFactory factory = new DiskFileItemFactory();
 				// 2、创建文件上传对象
-				ServletFileUpload upload = new ServletFileUpload();
+				ServletFileUpload upload = new ServletFileUpload(factory);
 				// 3、获取文件上传对象
 				try {
-					List<FileItem> fileitems = upload.parseRequest(request);
+					List<FileItem> fileitems =upload.parseRequest(request);
 					// 使用迭代器获取文件
 					Iterator<FileItem> iter = fileitems.iterator();
 					while (iter.hasNext()) {
@@ -42,12 +41,21 @@ public class UpLoad extends HttpServlet {
 							// 判断文件是否选择，如果没有选择也会提交文件对象
 							// 写入日志
 							if (item.getName() != null
-									&& item.getName().equals(" ")) {
+									&& !item.getName().equals(" ")) {	
+								System.out.println("dzq_test");
 								// 4、保存到服务器
 								//创建临时文件
 								File tmpFile = new File(item.getName());
+								String  path = request.getServletContext().getRealPath("/");
+								System.out.println(path);
+								path = path+"files";
+								File files = new File(path);
+								files.mkdirs();
+								System.out.println(path);
+								//创建服务器文件夹
 								//创建服务器文件
-								File fileOnserver = new File(this.getServletContext().getRealPath("/files"),tmpFile.getName());
+								File fileOnserver = new File(path,tmpFile.getName());
+								//System.out.println(fileOnserver.getAbsolutePath());
 								//写入文件内容
 								item.write(fileOnserver);
 								System.out.println("文件上传成功！");
